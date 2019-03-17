@@ -10,11 +10,14 @@ int le_arquivo_config(char* arq_config){
       int tipo_veiculo;
       char eixo_veiculo;
       int x, y;
+
       FILE *arqc = fopen(arq_config, "r");
+
       if(arqc == NULL){
             printf("Erro na abertura do arquivo %s\n", arq_config);
             return 0;
       }
+
       while(!feof(arqc)){
             fscanf(arqc, "%c %d %c X%dY%d\n", &nome_veiculo, &tipo_veiculo, &eixo_veiculo, &x, &y);
             //criar lista encadeada dos veículos e das manobras e depois enviar para diminuir o tempo de execução
@@ -39,7 +42,7 @@ lista_veiculos *adicionar_veiculo(lista_veiculos *li, char nome_veiculo, int tip
       li->veiculo.eixo_veiculo = eixo_veiculo;
       li->veiculo.x = x;
       li->veiculo.y = y;
-      li->prox = NUll
+      li->prox = NULL;
 }
 
 int le_arquivo_manobras(char* arq_manobras){

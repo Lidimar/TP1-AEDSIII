@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]){
       int result;
-      if (argc=3){
+      if (argc = 3){
             result = le_arquivo_config(argv[1]);
             if(result == 0){
                   return 0;
