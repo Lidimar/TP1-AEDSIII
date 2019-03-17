@@ -1,6 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+#include <sys/resource.h>
+#include <sys/time.h>
+#include <unistd.h>
+#include "config.h"
 
+struct Veiculo{
+      char nome_veiculo;
+      int tipo_veiculo;
+      char eixo_veiculo;
+      int x;
+      int y;
+};
 
-int ConfInit(void);
-//void alocaMatriz(int x, int y)
+typedef struct Lista_Veiculos lista_veiculos;
+
+int le_arquivo_config(char* arq_config);
+int le_arquivo_manobras(char* arq_manobras);
+lista_veiculos *criar_lista();
