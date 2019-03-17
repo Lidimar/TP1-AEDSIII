@@ -1,8 +1,8 @@
 compile:
 	clear
-	gcc main.c config.c io.c manobras.c -w -o tp1
+	gcc main.c config.h config.c io.h io.c manobras.h manobras.c -w -o tp1
 
-executa:
+execute:
 	./tp1
 
 clean:
