@@ -5,14 +5,19 @@
 #include <sys/time.h>
 #include <unistd.h>
 
-/*struct veiculo{
+typedef struct Dados_Veiculo{
       char nome_veiculo;
       int tipo_veiculo;
       char eixo_veiculo;
       int x;
       int y;
-};*/
+} Veiculo;
 
-//typedef struct Lista_Veiculos* lista_veiculos; //lista_veiculos = Lista . Lista_Veiculos = elemento
+struct Lista_Veiculos{
+      struct Dados_Veiculo veiculo;
+      struct Lista_Veiculos *prox;
+};
 
-void posiciona_veiculo(char nome_veiculo, int tipo_veiculo, char eixo_veiculo, int x, int y);
+typedef struct Lista_Veiculos lista_veiculos;
+
+void posiciona_veiculo(lista_veiculos **raiz);
