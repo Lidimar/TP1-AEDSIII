@@ -6,16 +6,10 @@
 #include <unistd.h>
 #include "config.h"
 
-struct Veiculo{
-      char nome_veiculo;
-      int tipo_veiculo;
-      char eixo_veiculo;
-      int x;
-      int y;
-};
-
 typedef struct Lista_Veiculos lista_veiculos;
 
 int le_arquivo_config(char* arq_config);
 int le_arquivo_manobras(char* arq_manobras);
-lista_veiculos *criar_lista();
+lista_veiculos *cria_lista();
+//void imprime_lista(lista_veiculos **li);
+void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo, char eixo_veiculo, int x, int y);
