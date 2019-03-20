@@ -1,7 +1,7 @@
 #include "io.h"
 
 
-int le_arquivo_config(char* arq_config){
+char** le_arquivo_config(char* arq_config){
       char nome_veiculo;
       int tipo_veiculo;
       char eixo_veiculo;
@@ -12,22 +12,17 @@ int le_arquivo_config(char* arq_config){
             return 0;
       }
       lista_veiculos *lista_config;
-      lista_config = cria_lista();
-      if (lista_config == NULL){
-            printf("ERRO 1\n");
-      }
+      lista_config = cria_lista_veiculos();
       while(!feof(arqc)){
             fscanf(arqc, "%c %d %c X%dY%d\n", &nome_veiculo, &tipo_veiculo, &eixo_veiculo, &x, &y);
             adicionar_veiculo(&lista_config, nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);
       }
-      posiciona_veiculo(&lista_config);
-
-      //imprime_lista(&lista_config);
+      char **estac = posiciona_veiculo(&lista_config);
       fclose(arqc);
-      return 1;
+      return estac;
 }
 
-lista_veiculos *cria_lista(){
+lista_veiculos *cria_lista_veiculos(){
       lista_veiculos *li = (lista_veiculos*) malloc (sizeof(lista_veiculos));
       if(li == NULL){
             printf("Erro ao alocar memória.\n");
@@ -63,29 +58,56 @@ void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo,
       }
 }
 
-/*void imprime_lista(lista_veiculos **li){
-      lista_veiculos *aux;
-      aux = *li;
-      while(aux->prox!=NULL){
-            aux = aux->prox;
-            printf("%c %d %c X%dY%d\n", aux->veiculo.nome_veiculo, aux->veiculo.tipo_veiculo, aux->veiculo.eixo_veiculo, aux->veiculo.x, aux->veiculo.y);
-      }
-}*/
-
-int le_arquivo_manobras(char* arq_manobras){
+int le_arquivo_manobras(char* arq_manobras, char **estac){
       char nome_veiculo_mov;
       char eixo_mov;
-      char sign;
       int posicoes_mov;
       FILE *arqm = fopen(arq_manobras, "r");
       if(arqm == NULL){
             printf("Erro na abertura do arquivo %s\n", arq_manobras);
             return 0;
       }
-      
+      lista_manobras *lista_movimentos;
+      lista_movimentos = cria_lista_manobras();
       while(!feof(arqm)){
-            fscanf(arqm, "%c %c %c%d\n", &nome_veiculo_mov, &eixo_mov, &sign, &posicoes_mov);
+            fscanf(arqm, "%c %c %d\n", &nome_veiculo_mov, &eixo_mov, &posicoes_mov);
+            adicionar_manobra(&lista_movimentos, nome_veiculo_mov, eixo_mov, posicoes_mov);
       }
+      int result = movimenta_veiculo(&lista_movimentos, estac);
       fclose(arqm);
       return 1;
+}
+
+lista_manobras *cria_lista_manobras(){
+      lista_manobras *li = (lista_manobras*) malloc (sizeof(lista_manobras));
+      if(li == NULL){
+            printf("Erro ao alocar memória.\n");
+            return NULL;
+      }
+      li->prox = NULL;
+      return li;
+}
+
+void adicionar_manobra(lista_manobras **li, char nome_veiculo_mov, char eixo_mov, int posicoes_mov){
+      lista_manobras *novo = (lista_manobras*) malloc(sizeof(lista_manobras));
+      if(novo == NULL){
+            printf("Erro ao alocar memória.\n");
+            exit(0);
+      }
+      novo->movimento.nome_veiculo_mov = nome_veiculo_mov;
+      novo->movimento.eixo_mov = eixo_mov;
+      novo->movimento.posicoes_mov = posicoes_mov;
+      novo->prox = NULL;
+
+      if(*li == NULL){
+            *li = novo;
+      }
+      else{
+            lista_manobras *aux;
+            aux = *li;
+            while (aux->prox != NULL){
+                  aux = aux->prox;
+            }
+            aux->prox = novo;
+      }
 }

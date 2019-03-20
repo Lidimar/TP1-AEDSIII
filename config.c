@@ -1,8 +1,12 @@
 #include "config.h"
 
 
-void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
-      char estac[6][6];
+char **posiciona_veiculo(lista_veiculos **raiz){ //receber lista
+      char **estac = malloc(sizeof (char*) * 6); //cria matriz dinamicamente
+      char *mat = malloc(sizeof (char) * 6 * 6);
+      for (int i=0; i<6; i++){
+            estac[i] = &mat[6*i];
+      }
       int i, j;
       char nome_veiculo;
       int tipo_veiculo;
@@ -28,7 +32,6 @@ void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
                   eixo_veiculo = aux->veiculo.eixo_veiculo;
                   x = ((aux->veiculo.x)-1);
                   y = ((aux->veiculo.y)-1);
-                  printf("%c %d %c X%dY%d\n", nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);
                   estac[x][y]=nome_veiculo;
                   //verificar o eixo e o tipo de veículo (carro ou caminhão)
                   if(eixo_veiculo == 'x' || eixo_veiculo == 'X'){
@@ -51,10 +54,5 @@ void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
                   }
             }
       }
-
-
-      //imprime estacionamento
-      for(i=5; i>=0; i--){
-                  printf("%c %c %c %c %c %c\n", estac[0][i], estac[1][i], estac[2][i], estac[3][i], estac[4][i], estac[5][i]);
-      }
+      return estac;
 }

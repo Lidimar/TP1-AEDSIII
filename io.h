@@ -5,11 +5,13 @@
 #include <sys/time.h>
 #include <unistd.h>
 #include "config.h"
+#include "manobras.h"
 
 typedef struct Lista_Veiculos lista_veiculos;
 
-int le_arquivo_config(char* arq_config);
-int le_arquivo_manobras(char* arq_manobras);
-lista_veiculos *cria_lista();
-//void imprime_lista(lista_veiculos **li);
+char** le_arquivo_config(char* arq_config);
+lista_veiculos *cria_lista_veiculos();
 void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo, char eixo_veiculo, int x, int y);
+int le_arquivo_manobras(char* arq_manobras, char **estac);
+lista_manobras *cria_lista_manobras();
+void adicionar_manobra(lista_manobras **li, char nome_veiculo_mov, char eixo_mov, int posicoes_mov);

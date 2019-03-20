@@ -20,4 +20,4 @@ struct Lista_Veiculos{
 
 typedef struct Lista_Veiculos lista_veiculos;
 
-void posiciona_veiculo(lista_veiculos **raiz);
+char **posiciona_veiculo(lista_veiculos **raiz);
