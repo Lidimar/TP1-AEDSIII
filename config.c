@@ -1,8 +1,12 @@
 #include "config.h"
 
 
-void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
-      char estac[6][6];
+char **posiciona_veiculo(lista_veiculos **raiz){ //receber lista
+      char **estac = malloc(sizeof (char*) * 6); //cria matriz dinamicamente
+      char *mat = malloc(sizeof (char) * 6 * 6);
+      for (int i=0; i<6; i++){
+            estac[i] = &mat[6*i];
+      }
       int i, j;
       char nome_veiculo;
       int tipo_veiculo;
