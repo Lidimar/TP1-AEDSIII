@@ -8,6 +8,7 @@ void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
       int tipo_veiculo;
       char eixo_veiculo;
       int x, y;
+      
       //zera estacionamento
       for(i=0; i<6; i++){
             for(j=0; j<6; j++){
@@ -22,14 +23,18 @@ void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
             lista_veiculos *aux;
             aux = *raiz;
             while(aux->prox != NULL){ //percorre a lista e posiciona os veículos
+                  
                   aux = aux->prox;
                   nome_veiculo = aux->veiculo.nome_veiculo;
                   tipo_veiculo = aux->veiculo.tipo_veiculo;
                   eixo_veiculo = aux->veiculo.eixo_veiculo;
                   x = ((aux->veiculo.x)-1);
                   y = ((aux->veiculo.y)-1);
+                 
                   printf("%c %d %c X%dY%d\n", nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);
+                  
                   estac[x][y]=nome_veiculo;
+
                   //verificar o eixo e o tipo de veículo (carro ou caminhão)
                   if(eixo_veiculo == 'x' || eixo_veiculo == 'X'){
                         if(tipo_veiculo == 2){
@@ -53,7 +58,7 @@ void posiciona_veiculo(lista_veiculos **raiz){ //receber lista
       }
 
 
-      //imprime estacionamento
+      //imprime a configuracao inicial do estacionamento
       for(i=5; i>=0; i--){
                   printf("%c %c %c %c %c %c\n", estac[0][i], estac[1][i], estac[2][i], estac[3][i], estac[4][i], estac[5][i]);
       }
