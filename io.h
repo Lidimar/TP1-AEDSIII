@@ -9,9 +9,9 @@
 
 typedef struct Lista_Veiculos lista_veiculos;
 
-char** le_arquivo_config(char* arq_config);
+void le_arquivo_config(char* arq_config, char* estac);
 lista_veiculos *cria_lista_veiculos();
 void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo, char eixo_veiculo, int x, int y);
-int le_arquivo_manobras(char* arq_manobras, char **estac);
+int le_arquivo_manobras(char* arq_manobras, char* estac);
 lista_manobras *cria_lista_manobras();
 void adicionar_manobra(lista_manobras **li, char nome_veiculo_mov, char eixo_mov, int posicoes_mov);

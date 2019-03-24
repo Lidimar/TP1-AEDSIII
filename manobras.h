@@ -18,4 +18,4 @@ struct Lista_Manobras{
 
 typedef struct Lista_Manobras lista_manobras;
 
-int movimenta_veiculo(lista_manobras **raiz, char **estac);
+int movimenta_veiculo(lista_manobras **raiz, char* estac);

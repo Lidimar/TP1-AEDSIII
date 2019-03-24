@@ -5,17 +5,21 @@
 int main(int argc, char **argv){
 
       int flag;
+      printf("antes\n");
       
+      //Aloca memoria para tamanho do estacionamento de 6x6
+      char* estac = malloc(sizeof (char) * 6 * 6);      
+
       //Argumento de linha de comando do getopt
       while((flag = getopt(argc, argv, "xyh")) != -1){
             switch (flag)
             {
                   case 'x':
-                        le_arquivo_config("arquivoconfig.txt");
+                        le_arquivo_config("arquivoconfig.txt", estac);
                         break;
                   
                   case 'y':
-                        le_arquivo_manobras("arquivomanobras.txt");
+                        le_arquivo_manobras("arquivomanobras.txt", estac);
                         break;
 
                   case 'h':
