@@ -18,7 +18,10 @@ void le_arquivo_config(char* arq_config, char* estac){
       lista_config = cria_lista_veiculos();
 
       while(!feof(arqc)){
-            fscanf(arqc, "%c %d %c X%dY%d\n", &nome_veiculo, &tipo_veiculo, &eixo_veiculo, &x, &y);
+            fscanf(arqc, "%c %d %c X%dY%d\n", &nome_veiculo, &tipo_veiculo, &eixo_veiculo, &x, &y);//le todo o arquivo e grava nas variaveis
+
+            printf("%c %d %c X%dY%d\n", nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);//printa as coordenadas existente no arquivo de configuracao
+
             adicionar_veiculo(&lista_config, nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);
       }
       
@@ -28,6 +31,7 @@ void le_arquivo_config(char* arq_config, char* estac){
 }
 
 lista_veiculos *cria_lista_veiculos(){
+      
       lista_veiculos *li = (lista_veiculos*) malloc (sizeof(lista_veiculos));
      
       if(li == NULL){
@@ -41,6 +45,7 @@ lista_veiculos *cria_lista_veiculos(){
 }
 
 void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo, char eixo_veiculo, int x, int y){
+      
       lista_veiculos *novo = (lista_veiculos*) malloc(sizeof(lista_veiculos));
       
       if(novo == NULL){
@@ -91,6 +96,7 @@ int le_arquivo_manobras(char* arq_manobras, char* estac){
 
       while(!feof(arqm)){
             fscanf(arqm, "%c %c %d\n", &nome_veiculo_mov, &eixo_mov, &posicoes_mov);
+
             adicionar_manobra(&lista_movimentos, nome_veiculo_mov, eixo_mov, posicoes_mov);
 
             cont++;
@@ -104,6 +110,7 @@ int le_arquivo_manobras(char* arq_manobras, char* estac){
 }
 
 lista_manobras *cria_lista_manobras(){
+     
       lista_manobras *li = (lista_manobras*) malloc (sizeof(lista_manobras));
      
       if(li == NULL){

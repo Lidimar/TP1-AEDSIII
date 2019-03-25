@@ -5,7 +5,6 @@
 int main(int argc, char **argv){
 
       int flag;
-      printf("antes\n");
       
       //Aloca memoria para tamanho do estacionamento de 6x6
       char* estac = malloc(sizeof (char) * 6 * 6);      
@@ -36,5 +35,8 @@ int main(int argc, char **argv){
             }
       }
       
-       return 0;
+      //fecha os arquivos aberto
+     // int fcloseall();
+
+      return 0;
 }
