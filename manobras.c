@@ -1,3 +1,16 @@
+/*
+ * LIDIMAR DOS SANTOS JUNIOR
+ * AMANDA DE ARAUJO MORATO
+ *
+ * MANOBRAS.C
+ *
+ * TRABALHO PRÁTICO I
+ *
+ * CIÊNCIA DA COMPUTAÇÃO
+ * ALGORITMOS E ESTRUTURA DE DADOS III
+ * 1/2019
+ */
+
 #include "manobras.h"
 
 int movimenta_veiculo(lista_manobras **raiz, char* estac){

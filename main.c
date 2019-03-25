@@ -1,8 +1,31 @@
+/*
+ * LIDIMAR DOS SANTOS JUNIOR
+ * AMANDA DE ARAUJO MORATO
+ *
+ * MAIN.C
+ *
+ * TRABALHO PRÁTICO I
+ *
+ * CIÊNCIA DA COMPUTAÇÃO
+ * ALGORITMOS E ESTRUTURA DE DADOS III
+ * 1/2019
+ */
+
 #include "io.h"
 #include <stdio.h>
 #include <stdlib.h>
 
 int main(int argc, char **argv){
+      //cria uma struct para inicializacao do getimeofday
+      struct timeval inicio, final;
+      
+      //inicializa gettimeofday
+      gettimeofday(&inicio, NULL);
+      
+      Tempo t;
+      
+      //inicia a contagem do tempo por getrusage
+      iniciaTempo(&t);
 
       int flag;
       
@@ -30,13 +53,24 @@ int main(int argc, char **argv){
                         break;
 
                   default:
-                        fprintf(stderr, "getopt");
+                        printf("Opcao invalida ou faltando argumento: `%c'\n", optopt) ;
                         break;
             }
       }
+
       
-      //fecha os arquivos aberto
-     // int fcloseall();
+      //finaliza funcao de tempo por getrusage
+      finalizaTempo(&t, &t.tempoU, &t.tempoS);
+      
+      //imprime os tempos de getrusage
+      printf("\n\n-Getrusage\nUser time: %f\nSystem Time: %f\nTotal Time: %f\n", t.tempoU, t.tempoS, t.tempoS + t.tempoU);
+      
+      //finaliza a funcao gettimeofday
+      gettimeofday(&final, NULL);
+      
+      //imprime gettimeofday
+      printf("Get Time of Day: %ld\n", (1000 * (final.tv_sec - inicio.tv_sec) + (final.tv_usec - inicio.tv_usec) / 1000));
+
 
       return 0;
 }

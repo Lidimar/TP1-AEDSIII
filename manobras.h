@@ -1,3 +1,16 @@
+/*
+ * LIDIMAR DOS SANTOS JUNIOR
+ * AMANDA DE ARAUJO MORATO
+ *
+ * MANOBRAS.H
+ *
+ * TRABALHO PRÁTICO I
+ *
+ * CIÊNCIA DA COMPUTAÇÃO
+ * ALGORITMOS E ESTRUTURA DE DADOS III
+ * 1/2019
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
