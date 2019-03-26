@@ -37,16 +37,16 @@ void le_arquivo_config(char* arq_config, char* estac){
 
             adicionar_veiculo(&lista_config, nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);
       }
-      
-      posiciona_veiculo(&lista_config, estac);
 
+      posiciona_veiculo(&lista_config, estac);
+      desaloca_veic(&lista_config);
       fclose(arqc);
 }
 
 lista_veiculos *cria_lista_veiculos(){
-      
+
       lista_veiculos *li = (lista_veiculos*) malloc (sizeof(lista_veiculos));
-     
+
       if(li == NULL){
             printf("Erro ao alocar memória.\n");
             return NULL;
@@ -58,9 +58,9 @@ lista_veiculos *cria_lista_veiculos(){
 }
 
 void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo, char eixo_veiculo, int x, int y){
-      
+
       lista_veiculos *novo = (lista_veiculos*) malloc(sizeof(lista_veiculos));
-      
+
       if(novo == NULL){
             printf("Erro ao alocar memória.\n");
             exit(0);
@@ -89,7 +89,7 @@ void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo,
 }
 
 int le_arquivo_manobras(char* arq_manobras, char* estac){
-       
+
       char nome_veiculo_mov;
       char eixo_mov;
       int posicoes_mov;
@@ -102,9 +102,9 @@ int le_arquivo_manobras(char* arq_manobras, char* estac){
       }
 
       lista_manobras *lista_movimentos;
-     
+
       lista_movimentos = cria_lista_manobras();
-     
+
       int cont = 0;
 
       while(!feof(arqm)){
@@ -116,30 +116,30 @@ int le_arquivo_manobras(char* arq_manobras, char* estac){
       }
 
       int result = movimenta_veiculo(&lista_movimentos, estac);
-
+      desaloca_manobras(&lista_movimentos);
       fclose(arqm);
 
       return 0;
 }
 
 lista_manobras *cria_lista_manobras(){
-     
+
       lista_manobras *li = (lista_manobras*) malloc (sizeof(lista_manobras));
-     
+
       if(li == NULL){
             printf("Erro ao alocar memória.\n");
             return NULL;
       }
-      
+
       li->prox = NULL;
-      
+
       return li;
 }
 
 void adicionar_manobra(lista_manobras **li, char nome_veiculo_mov, char eixo_mov, int posicoes_mov){
 
       lista_manobras *novo = (lista_manobras*) malloc(sizeof(lista_manobras));
-      
+
       if(novo == NULL){
             printf("Erro ao alocar memória.\n");
             exit(0);
@@ -156,18 +156,40 @@ void adicionar_manobra(lista_manobras **li, char nome_veiculo_mov, char eixo_mov
       else{
             lista_manobras *aux;
             aux = *li;
-            
+
             while (aux->prox != NULL){
                   aux = aux->prox;
             }
-            
+
             aux->prox = novo;
       }
-      
+
+}
+
+void desaloca_veic(lista_veiculos **li){
+    lista_veiculos *no, *aux;
+    no = *li;
+    while (no != NULL){
+        aux = no;
+        no = no->prox;
+        free(aux);
+    }
+    li = NULL;
+}
+
+void desaloca_manobras(lista_manobras **li){
+    lista_manobras *no, *aux;
+    no = *li;
+    while (no != NULL){
+        aux = no;
+        no = no->prox;
+        free(aux);
+    }
+    li = NULL;
 }
 
 void iniciaTempo(Tempo *t){
-    
+
     //Inicia a contagem de tempo do usuario e sistema.
     getrusage(RUSAGE_SELF, &(t->resources));
     t->inicioU = t->resources.ru_utime;
@@ -175,16 +197,15 @@ void iniciaTempo(Tempo *t){
 }
 
 void finalizaTempo(Tempo *t,double *tempoU, double *tempoS){
-    
+
     // Finaliza a contagem de tempo do usuario e sistema.
     getrusage(RUSAGE_SELF, &(t->resources));
     t->fimU = t->resources.ru_utime;
     t->fimS = t->resources.ru_stime;
-    
+
     // Calcula o tempo do usuario.
     *tempoU = (double) (t->fimU.tv_sec - t->inicioU.tv_sec) + 1.e-6 * (double) (t->fimU.tv_usec - t->inicioU.tv_usec);
-    
+
     // Calcula o tempo do sistema.
     *tempoS = (double) (t->fimS.tv_sec - t->inicioS.tv_sec) + 1.e-6 * (double) (t->fimS.tv_usec - t->inicioS.tv_usec);
 }
-
