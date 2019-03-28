@@ -1,8 +1,0 @@
-D Y 1
-D Y 1
-F X -1
-H Y 2
-D Y 1
-A Y -3
-G Y -1
-Z X 1

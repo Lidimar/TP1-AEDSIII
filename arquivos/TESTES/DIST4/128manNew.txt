@@ -1,9 +1,0 @@
-Z X -1
-B X 1
-C Y -2
-B X 2
-A X 3
-B X -3
-C Y 2
-A X -2
-Z X 2

@@ -1,7 +1,0 @@
-B Y -1
-B Y -1
-K Y -1
-B Y 1
-K Y 1
-J Y -2
-Z X 1

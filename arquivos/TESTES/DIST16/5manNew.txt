@@ -1,6 +1,0 @@
-A Y -1
-F X 1
-F X -1
-N X 1
-A Y 1
-F X 1

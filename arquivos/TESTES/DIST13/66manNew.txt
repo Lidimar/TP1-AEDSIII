@@ -1,7 +1,0 @@
-L X 1
-L X 1
-L X 1
-H X -1
-E X 1
-I X 1
-Z X 1

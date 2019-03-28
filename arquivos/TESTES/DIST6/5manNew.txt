@@ -1,6 +1,0 @@
-E X 1
-D Y 1
-A X 4
-E Y 2
-E Y -1
-A Y 1

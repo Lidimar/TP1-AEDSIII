@@ -1,7 +1,0 @@
-E X 1
-B Y -1
-C Y -2
-B Y 1
-D Y 1
-K X -1
-Z Y 1

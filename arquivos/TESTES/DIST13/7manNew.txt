@@ -1,8 +1,0 @@
-Z Y 1
-Z Y 1
-Z Y 1
-G Y 1
-C Y 1
-C Y -1
-Z Y -1
-Z Y 1

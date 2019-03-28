@@ -1,3 +1,0 @@
-Z 2 X X5Y4
-A 3 Y X1Y3
-B 3 Y X3Y3

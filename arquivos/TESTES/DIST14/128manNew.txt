@@ -1,9 +1,0 @@
-M Y 1
-M Y 1
-M Y 1
-M Y 1
-M Y 1
-M Y 1
-A Y -1
-H X -1
-Z Y 1

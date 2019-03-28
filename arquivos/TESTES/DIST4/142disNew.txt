@@ -1,4 +1,0 @@
-Z 2 X X1Y5
-A 2 X X5Y6
-B 2 X X2Y1
-C 3 X X1Y2

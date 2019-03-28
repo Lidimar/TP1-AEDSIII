@@ -1,5 +1,0 @@
-G X 1
-G X 1
-G X 1
-G X 1
-Z Y 2

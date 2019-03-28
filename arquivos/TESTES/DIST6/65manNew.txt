@@ -1,6 +1,0 @@
-Z Y 3
-Z Y 3
-A Y 1
-C Y 2
-E Y -3
-Z Y -1
