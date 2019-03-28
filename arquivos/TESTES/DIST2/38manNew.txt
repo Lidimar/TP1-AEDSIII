@@ -1,0 +1,9 @@
+Z Y 1
+Z Y 3
+Z X 4
+A X -3
+Z Y -4
+A Y -1
+Z X -1
+Z Y 3
+Z X 1

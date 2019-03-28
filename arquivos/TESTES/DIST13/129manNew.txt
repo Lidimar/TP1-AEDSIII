@@ -1,0 +1,10 @@
+K X 1
+K X 1
+K X 1
+K X 1
+K X 1
+K X -1
+C X 1
+J X -1
+I X -1
+Z Y 1

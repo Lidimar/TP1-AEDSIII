@@ -1,0 +1,9 @@
+B X 1
+B X 1
+G Y -3
+B X -1
+D Y 1
+B X 1
+G X -1
+B Y -1
+Z X 1

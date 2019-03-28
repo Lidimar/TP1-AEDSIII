@@ -1,0 +1,8 @@
+Z Y -2
+Z Y 1
+Z Y -1
+Z Y 2
+Z Y -2
+Z Y 1
+Z Y -1
+Z Y 2

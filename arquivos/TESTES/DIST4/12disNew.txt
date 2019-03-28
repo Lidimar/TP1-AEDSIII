@@ -1,0 +1,4 @@
+Z 3 Y X5Y4
+A 3 Y X3Y4
+B 3 Y X4Y4
+C 3 Y X1Y4

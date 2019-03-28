@@ -1,0 +1,10 @@
+C Y -1
+C Y -1
+C Y -1
+C Y -1
+Z X -1
+H X -1
+Z X 1
+Z X -1
+C Y -1
+Z X 1

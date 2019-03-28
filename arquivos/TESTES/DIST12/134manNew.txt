@@ -1,0 +1,15 @@
+C Y 1
+F X 1
+I X -1
+J X 1
+D Y 1
+I X -1
+C X 2
+E X -1
+B Y -2
+H X -1
+I Y 1
+E Y 2
+C Y -1
+H X 1
+Z Y -2

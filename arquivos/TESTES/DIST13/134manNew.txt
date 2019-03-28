@@ -1,0 +1,15 @@
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+Z Y 2
+D X -1
+H X -1
+L Y -1
+F X 1
+Z Y -1

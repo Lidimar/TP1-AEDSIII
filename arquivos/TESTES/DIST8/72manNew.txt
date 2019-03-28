@@ -1,0 +1,13 @@
+A X 1
+E X 2
+B X -1
+D Y -1
+G Y 2
+C Y 1
+A X -1
+E Y -1
+A X 1
+A Y 1
+G Y 1
+B X 1
+Z X 1

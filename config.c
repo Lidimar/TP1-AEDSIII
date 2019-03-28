@@ -11,6 +11,13 @@
  * 1/2019
  */
 
+/*
+* 
+* Esse modulo visa inserir no estacinamento todos os veiculos em sua configuracao inicial
+*
+*
+*/
+
 #include "config.h"
 
 

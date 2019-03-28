@@ -1,0 +1,16 @@
+Z Y -1
+Z Y 1
+J Y 1
+I Y 2
+D X 1
+D X -1
+L Y -1
+I Y 1
+C Y -1
+K X -1
+D Y 1
+K X 1
+J Y -1
+I Y -1
+H Y 1
+Z Y -1

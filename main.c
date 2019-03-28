@@ -16,6 +16,7 @@
 #include <stdlib.h>
 
 int main(int argc, char **argv){
+
       //cria uma struct para inicializacao do getimeofday
       struct timeval inicio, final;
       
@@ -30,7 +31,10 @@ int main(int argc, char **argv){
       int flag;
       
       //Aloca memoria para tamanho do estacionamento de 6x6
-      char* estac = malloc(sizeof (char) * 6 * 6);      
+      char* estac = malloc(sizeof (char) * 6 * 6);
+
+      //Chama help.
+      if ( argc < 2 ) show_help(argv[0]) ;     
 
       //Argumento de linha de comando do getopt
       while((flag = getopt(argc, argv, "xyh")) != -1){
@@ -41,22 +45,29 @@ int main(int argc, char **argv){
                         break;
                   
                   case 'y':
+                        //printf("oioioi %c\n", lista_config->prox->veiculo.nome_veiculo);
                         le_arquivo_manobras("arquivomanobras.txt", estac);
                         break;
 
                   case 'h':
-                        fprintf(stderr, "-x Chamar arquivo de configuracao inicial\n-y Chamar arquivo de manobras\n");
-                        break;
-
-                  case '?':
-                        fprintf(stderr, "Argumento inválido ou não informado\n");
+                        show_help(argv[0]) ;
                         break;
 
                   default:
                         printf("Opcao invalida ou faltando argumento: `%c'\n", optopt) ;
-                        break;
+                        return -1 ;
             }
       }
+
+      // Mostra os argumentos em excesso
+    if ( argv[optind] != NULL ) {
+        int i ;
+        
+        puts("** Argumentos em excesso **") ;
+        for(i=optind; argv[i] != NULL; i++) {
+            printf("-- %s\n", argv[i]) ;
+        }
+    }
 
       
       //finaliza funcao de tempo por getrusage

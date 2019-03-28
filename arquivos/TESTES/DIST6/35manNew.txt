@@ -1,0 +1,6 @@
+E Y 1
+D Y 1
+A Y -4
+A Y 4
+E Y 1
+Z Y -1

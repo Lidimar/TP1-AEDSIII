@@ -1,0 +1,9 @@
+A Y 1
+A Y -1
+A Y 1
+J X 1
+J X -1
+K X 1
+L X -1
+K X -1
+K X 1

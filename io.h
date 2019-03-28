@@ -31,7 +31,7 @@ typedef struct tempo{
 
 typedef struct Lista_Veiculos lista_veiculos;
 
-void le_arquivo_config(char* arq_config, char* estac);
+void le_arquivo_config(char *arq_config, char *estac);
 
 lista_veiculos *cria_lista_veiculos();
 
@@ -46,4 +46,10 @@ void adicionar_manobra(lista_manobras **li, char nome_veiculo_mov, char eixo_mov
 void iniciaTempo(Tempo *t);
 
 void finalizaTempo(Tempo *t,double *tempoU, double *tempoS);
+
+void show_help(char *name);
+
+//lista_veiculos* get_veiculo_by_nome_veiculo(lista_veiculos* lista_config, char nome_veiculo);
+
+
 #endif

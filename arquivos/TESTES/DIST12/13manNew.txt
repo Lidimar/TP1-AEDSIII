@@ -1,0 +1,14 @@
+B Y -2
+B Y -2
+B Y -2
+B Y -2
+F Y 1
+H X -1
+K Y -1
+A Y -1
+H X 1
+J Y -1
+H X -1
+F Y -1
+A Y 2
+Z X 3

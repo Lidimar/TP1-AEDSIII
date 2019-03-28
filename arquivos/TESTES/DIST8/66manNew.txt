@@ -1,0 +1,7 @@
+E X -2
+E X -2
+G X -1
+C X -2
+G X 2
+B X 1
+Z X 1

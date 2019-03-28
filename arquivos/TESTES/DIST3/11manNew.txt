@@ -1,0 +1,12 @@
+B X -5
+Z Y 3
+Z Y -4
+A X -2
+Z Y 3
+Z Y -1
+A X 3
+A Y 1
+B X 2
+Z X -2
+Z Y 1
+Z X 2

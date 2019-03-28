@@ -1,0 +1,6 @@
+I X 1
+I X 1
+I X 1
+I X 1
+I X 1
+Z Y -1

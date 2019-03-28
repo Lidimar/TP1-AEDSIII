@@ -17,6 +17,10 @@
 #include <sys/resource.h>
 #include <sys/time.h>
 #include <unistd.h>
+#include "config.h"
+
+#ifndef MANOBRAS_H
+#define MANOBRAS_H
 
 typedef struct Dados_Manobras{
       char nome_veiculo_mov;
@@ -24,11 +28,13 @@ typedef struct Dados_Manobras{
       int posicoes_mov;
 } Manobras;
 
-struct Lista_Manobras{
+typedef struct Lista_Manobras{
       struct Dados_Manobras movimento;
       struct Lista_Manobras *prox;
-};
+}lista_manobras;
 
-typedef struct Lista_Manobras lista_manobras;
+//typedef struct Lista_Manobras lista_manobras;
 
 int movimenta_veiculo(lista_manobras **raiz, char* estac);
+
+#endif

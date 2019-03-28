@@ -1,0 +1,10 @@
+L Y -2
+L Y -2
+L Y -2
+L Y -2
+J Y 1
+L Y 2
+A Y 2
+H Y 1
+L Y -1
+Z Y -1

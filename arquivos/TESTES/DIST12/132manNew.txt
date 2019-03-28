@@ -1,0 +1,13 @@
+A Y 1
+J X -1
+D Y 1
+F Y 1
+J X 1
+H X -1
+G Y 1
+H X -1
+H X 1
+H X -1
+G Y -1
+A X 1
+D Y 1

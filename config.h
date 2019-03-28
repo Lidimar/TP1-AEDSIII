@@ -18,6 +18,9 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#ifndef CONFIG_H
+#define CONFIG_H
+
 typedef struct Dados_Veiculo{
       char nome_veiculo;
       int tipo_veiculo;
@@ -26,11 +29,12 @@ typedef struct Dados_Veiculo{
       int y;
 } Veiculo;
 
-struct Lista_Veiculos{
+typedef struct Lista_Veiculos{
       struct Dados_Veiculo veiculo;
       struct Lista_Veiculos *prox;
-};
+}lista_veiculos;
 
-typedef struct Lista_Veiculos lista_veiculos;
 
 char **posiciona_veiculo(lista_veiculos **raiz, char* estac);
+
+#endif

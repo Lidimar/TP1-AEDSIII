@@ -1,0 +1,12 @@
+E Y -2
+E Y -2
+H Y -1
+I X -2
+G Y -1
+H Y 2
+A Y -1
+C X -1
+C X 1
+A Y 1
+C X -1
+Z Y -1

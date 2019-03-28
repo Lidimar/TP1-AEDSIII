@@ -1,0 +1,7 @@
+C X 1
+C X 1
+F X -1
+A Y -1
+A Y 1
+G Y -1
+Z X 1

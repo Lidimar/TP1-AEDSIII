@@ -1,0 +1,11 @@
+J X -1
+J X -1
+J X -1
+J X -1
+J X -1
+J X -1
+E Y 1
+H X -1
+I X 1
+Z X -1
+Z X 1

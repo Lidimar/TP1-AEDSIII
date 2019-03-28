@@ -13,8 +13,7 @@
 
 #include "io.h"
 
-
-void le_arquivo_config(char* arq_config, char* estac){
+void le_arquivo_config(char *arq_config, char *estac){
       char nome_veiculo;
       int tipo_veiculo;
       char eixo_veiculo;
@@ -30,17 +29,22 @@ void le_arquivo_config(char* arq_config, char* estac){
       lista_veiculos *lista_config;
       lista_config = cria_lista_veiculos();
 
+     
+
       while(!feof(arqc)){
             fscanf(arqc, "%c %d %c X%dY%d\n", &nome_veiculo, &tipo_veiculo, &eixo_veiculo, &x, &y);//le todo o arquivo e grava nas variaveis
 
             printf("%c %d %c X%dY%d\n", nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);//printa as coordenadas existente no arquivo de configuracao
 
             adicionar_veiculo(&lista_config, nome_veiculo, tipo_veiculo, eixo_veiculo, x, y);
+            
       }
-      
+
       posiciona_veiculo(&lista_config, estac);
 
+      
       fclose(arqc);
+
 }
 
 lista_veiculos *cria_lista_veiculos(){
@@ -53,6 +57,7 @@ lista_veiculos *cria_lista_veiculos(){
       }
 
       li->prox = NULL;
+       printf("%c\n", li);
 
       return li;
 }
@@ -86,6 +91,7 @@ void adicionar_veiculo(lista_veiculos **li, char nome_veiculo, int tipo_veiculo,
 
             aux->prox = novo;
       }
+
 }
 
 int le_arquivo_manobras(char* arq_manobras, char* estac){
@@ -100,11 +106,14 @@ int le_arquivo_manobras(char* arq_manobras, char* estac){
             printf("Erro na abertura do arquivo %s\n", arq_manobras);
             return 1;
       }
-
+  
       lista_manobras *lista_movimentos;
-     
       lista_movimentos = cria_lista_manobras();
-     
+
+      lista_veiculos *lista_config;
+      lista_config = cria_lista_veiculos();
+
+      
       int cont = 0;
 
       while(!feof(arqm)){
@@ -187,4 +196,15 @@ void finalizaTempo(Tempo *t,double *tempoU, double *tempoS){
     // Calcula o tempo do sistema.
     *tempoS = (double) (t->fimS.tv_sec - t->inicioS.tv_sec) + 1.e-6 * (double) (t->fimS.tv_usec - t->inicioS.tv_usec);
 }
+
+//Mostra help do getopt
+void show_help(char *name) {
+    fprintf(stderr, "\
+            [uso] %s <opcoes>\n\
+            -h Help.\n\
+            -x Carregar Arquivo de configuracao inicial do estacionamento\n\
+            -y Carrega Arquvio de manobras.\n", name) ;
+    exit(-1) ;
+}
+
 

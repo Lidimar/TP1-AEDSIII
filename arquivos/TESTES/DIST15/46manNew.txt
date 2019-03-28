@@ -1,0 +1,17 @@
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X 1
+F X -1
+H X -1
+H X 1
+Z X -1
+Z X 1

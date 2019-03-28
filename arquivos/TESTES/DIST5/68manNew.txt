@@ -1,0 +1,9 @@
+D Y -3
+D Y -3
+A Y -1
+A Y 2
+Z Y -4
+C Y 4
+A X 1
+D X -1
+Z Y 2

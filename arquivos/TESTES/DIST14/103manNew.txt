@@ -1,0 +1,14 @@
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y 1
+I Y -1
+H Y -1
+I Y 1
+Z X -1
+H Y 1
+K Y -2
+Z X 1

@@ -1,0 +1,5 @@
+B X 2
+B X 2
+B X 2
+E Y 1
+Z Y 1

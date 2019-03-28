@@ -1,0 +1,9 @@
+F X 3
+F X 3
+F X 3
+F X 3
+F X 3
+B Y 1
+E X -2
+D X -1
+Z X 1

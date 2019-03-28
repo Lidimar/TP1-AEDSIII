@@ -1,0 +1,17 @@
+A X -1
+B X 1
+A Y 2
+B X -2
+A Y -4
+A X -1
+A X 4
+D Y 2
+D Y -2
+B X 3
+A X -1
+A X -1
+D Y 1
+C X 2
+A X -1
+A X 2
+Z Y -2
