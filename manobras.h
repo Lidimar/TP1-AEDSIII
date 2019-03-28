@@ -33,8 +33,6 @@ typedef struct Lista_Manobras{
       struct Lista_Manobras *prox;
 }lista_manobras;
 
-//typedef struct Lista_Manobras lista_manobras;
-
 int movimenta_veiculo(lista_manobras **raiz, char* estac);
 
 #endif

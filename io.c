@@ -57,7 +57,6 @@ lista_veiculos *cria_lista_veiculos(){
       }
 
       li->prox = NULL;
-       printf("%c\n", li);
 
       return li;
 }

@@ -45,7 +45,6 @@ int main(int argc, char **argv){
                         break;
                   
                   case 'y':
-                        //printf("oioioi %c\n", lista_config->prox->veiculo.nome_veiculo);
                         le_arquivo_manobras("arquivomanobras.txt", estac);
                         break;
 
@@ -60,14 +59,13 @@ int main(int argc, char **argv){
       }
 
       // Mostra os argumentos em excesso
-    if ( argv[optind] != NULL ) {
-        int i ;
-        
-        puts("** Argumentos em excesso **") ;
-        for(i=optind; argv[i] != NULL; i++) {
-            printf("-- %s\n", argv[i]) ;
-        }
-    }
+      if ( argv[optind] != NULL ) {
+            int i ;
+            puts("** Argumentos em excesso **") ;
+            for(i=optind; argv[i] != NULL; i++) {
+                  printf("-- %s\n", argv[i]) ;
+            }
+      }
 
       
       //finaliza funcao de tempo por getrusage
