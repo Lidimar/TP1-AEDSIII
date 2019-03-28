@@ -102,18 +102,8 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                              
                              //Zera casa no eixo X 1
                               estac[(x*6)+y] = '0';//estac[x][y]
-                              estac[(x*6)+(y+1)] = '0';//estac[x][y+1]
-                              estac[(x*6)+(y+2)] = '0';//estac[x][y+2]
-
-                              //Zera casa no eixo X 1
-                              estac[((x+1)*6)+y] = '0';//estac[x][y],
-                              estac[((x+1)*6)+(y+1)] = '0';//estac[x+1][y]
-                              estac[((x+1)*6)+(y+2)] = '0';//estac[x+2][y]
-                              
-                              //Zera casa no eixo X 1
-                              estac[((x+2)*6)+y] = '0';//estac[x][y],
-                              estac[((x+2)*6)+(y+1)] = '0';//estac[x+1][y]
-                              estac[((x+2)*6)+(y+2)] = '0';//estac[x+2][y]
+                              estac[((x+1)*6)+y] = '0';//estac[x+1][y]
+                              estac[((x+2)*6)+y] = '0';//estac[x+2][y]
 
 
                               //verifica colisões entre os veículos
@@ -140,7 +130,7 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                               estac[((x+1)*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y+1)+posicoes_mov] 
                               estac[((x+2)*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y+2)+posicoes_mov]
                         }
-                        cont = 0;
+                        
                   }
 
                   //carros do eixo X
@@ -179,11 +169,7 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                         else if (eixo_mov == 'y' || eixo_mov == 'Y'){
                               
                               estac[(x*6)+y] = '0';//estac[x][y]
-                              estac[(x*6)+(y+1)] = '0';//estac[x][y+1]
-
-                              //eixo X 2
                               estac[((x+1)*6)+y] = '0';//estac[x+1][y]
-                              estac[((x+1)*6)+(y+1)] = '0';//estac[x+1][y+1]
 
 
                               //verifica colisões entre os veículos
@@ -208,7 +194,7 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                               estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
                               estac[((x+1)*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x+1][(y+posicoes_mov] 
                         }
-                        cont = 0;
+                        
                   }
                   
                   /////******* Fim dos Carros e Caminhoes criados no Eixo X **********//////
@@ -217,7 +203,6 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
 
                   //Caminhao do eixo Y
                   if ((estac[x*6+y] == nome_veiculo_mov) && (estac[(x*6)+(y+1)] == nome_veiculo_mov) && (estac[(x*6)+(y+2)] == nome_veiculo_mov)){ 
-                        printf("Entrou no caminhao do eixo y\n");
 
                         //manobras dos veículos posicionados no eixo x
                         if (eixo_mov == 'y' || eixo_mov == 'Y'){ 
@@ -229,60 +214,37 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                               //verifica colisões entre os veículos
                               if (estac[(x*6)+(y+posicoes_mov)] != '0' && estac[(x*6)+(y+posicoes_mov)] > 0){//estac[x][y+posicoes_mov]
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+(y+posicoes_mov)]);//estac[x][y+posicoes_mov]
-                                    printf("colisao1y  caminhao\n");
                                     //exit(0);
                               }
                               else if (estac[(x*6)+((y-1)+posicoes_mov)] != '0' && estac[(x*6)+((y-1)+posicoes_mov)] > 0 ){//estac[x][(y-1)+posicoes_mov]
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-1)+posicoes_mov)]);//estac[x][(y-1)+posicoes_mov]
-                                    printf("colisao2y  caminhao\n");
                                     //exit(0);
                               }
                               else if (estac[(x*6)+((y-2)+posicoes_mov)] != '0' && estac[(x*6)+((y-2)+posicoes_mov)] > 0){//estac[x][(y-2)+posicoes_mov]
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-2)+posicoes_mov)]);//estac[x][(y-2)+posicoes_mov]
-                                    printf("colisao2y  caminhao\n");
                                     //exit(0);
                               }
 
                               //verifica colisões entre o caminhão e os limites do estacionamento
                               if (((y+posicoes_mov) > 5) || ((y+posicoes_mov) > 5) || (((y-2)+posicoes_mov) < 0) || (((y-2)+posicoes_mov) > 5)){
                                     printf("O carro %c ultrapassou os limites do estacionamento\n", nome_veiculo_mov);
-                                    printf("Ultrapassou y  caminhao\n");
                                     //exit(0);
                               }
 
                               printf("%d %c\n", posicoes_mov, nome_veiculo_mov);
 
                               estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
-                              printf("rabo 1 x%d y%d\n", x, y+posicoes_mov);
                               estac[(x*6)+((y+1)+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y-1)+posicoes_mov] 
-                              printf("rabo 2 x%d y%d\n", x, (y+1)+posicoes_mov );
                               estac[(x*6)+((y+2)+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y-2)+posicoes_mov]
-                              printf("rabo 3 x%d y%d\n", x, (y+2)+posicoes_mov);
-
-
-                              /*estac[((x+posicoes_mov)*6)+y] = nome_veiculo_mov;//estac[x+posicoes_mov][y]
-                              estac[(((x+1)+posicoes_mov)*6)+y] = nome_veiculo_mov;//estac[(x-1)+posicoes_mov][y]
-                              estac[(((x+2)+posicoes_mov)*6)+y] = nome_veiculo_mov;//estac[(x-2)+posicoes_mov][y]*/
 
                         }
                         //Movimentacao lateral no eixo x
                         else if (eixo_mov == 'x' || eixo_mov == 'X'){
                              
-                             //Zera casa no eixo X 1
-                              estac[(x*6)+y] = '0';//estac[x][y]
-                              estac[(x*6)+(y+1)] = '0';//estac[x][y+1]
-                              estac[(x*6)+(y+2)] = '0';//estac[x][y+2]
-
-                              //Zera casa no eixo X 1
-                              estac[((x+1)*6)+y] = '0';//estac[x][y],
-                              estac[((x+1)*6)+(y+1)] = '0';//estac[x+1][y]
-                              estac[((x+1)*6)+(y+2)] = '0';//estac[x+2][y]
-                              
-                              //Zera casa no eixo X 1
-                              estac[((x+2)*6)+y] = '0';//estac[x][y],
-                              estac[((x+2)*6)+(y+1)] = '0';//estac[x+1][y]
-                              estac[((x+2)*6)+(y+2)] = '0';//estac[x+2][y]
-
+                             //eixo x 1
+                              estac[(x*6)+y] = '0';//estac[x][y],
+                              estac[(x*6)+(y+1)] = '0';//estac[x+1][y]
+                              estac[(x*6)+(y+2)] = '0';//estac[x+1][y]
 
                               //verifica colisões entre os veículos
                               if (estac[(x*6)+(y+posicoes_mov)] != '0' && estac[(x*6)+(y+posicoes_mov)] > 0){//estac[x][y+posicoes_mov]
@@ -304,17 +266,17 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                                     //exit(0);
                               }
 
-                              estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
-                              estac[((x+1)*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y+1)+posicoes_mov] 
-                              estac[((x+2)*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y+2)+posicoes_mov]
+                              estac[((x+posicoes_mov)*6)+y] = nome_veiculo_mov;//estac[x-posicoes_mov][y+]
+                              estac[((x+posicoes_mov)*6)+(y+1)] = nome_veiculo_mov;//estac[x-posicoes_mov][y+1] 
+                              estac[((x+posicoes_mov)*6)+(y+2)] = nome_veiculo_mov;//estac[x-posicoes_mov][y+2] 
                         }
-                        cont = 0;
+                        
                   }
 
                   //carros do eixo y
                   else if ((estac[x*6+y] == nome_veiculo_mov) && (estac[(x*6)+(y+1)] == nome_veiculo_mov)){ 
                          
-                         //Toda matriz foi desmembrada e transformada em um vetor
+                        //Toda matriz foi desmembrada e transformada em um vetor
                         if (eixo_mov == 'y' || eixo_mov == 'Y'){ //manobras dos veículos posicionados no eixo x
                               //zera a posicao antiga
                               estac[(x*6)+y] = '0';//estac[x][y]
@@ -323,127 +285,60 @@ int movimenta_veiculo(lista_manobras **raiz, char* estac){
                               //verifica colisões entre os veículos
                               if (estac[(x*6)+(y+posicoes_mov)] != '0' && estac[(x*6)+(y+posicoes_mov)] > 0){//estac[x][y+posicoes_mov]
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+(y+posicoes_mov)]);//estac[x][y+posicoes_mov]
-                                    printf("colisao1y  carro\n");
                                     //exit(0);
                               }
                               else if (estac[(x*6)+((y-1)+posicoes_mov)] != '0' && estac[(x*6)+((y-1)+posicoes_mov)] > 0){//estac[x][(y-1)+posicoes_mov] 
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-1)+posicoes_mov)]);//estac[x][(y-1)+posicoes_mov]
-                                    printf("colisao2y  carro\n");
                                     //exit(0);
                               }
 
                               //verifica colisões entre o carro e os limites do estacionamento
                               if (((y+posicoes_mov) > 5) || ((y+posicoes_mov) < 0) || (((y-1)+posicoes_mov) < 0) || (((y-1)+posicoes_mov) > 5)){
                                     printf("O carro %c ultrapassou os limites do estacionamento\n", nome_veiculo_mov);
-                                    printf("Ultrapassou y  carro\n");
                                     //exit(0);
                               }
                               estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
                               estac[(x*6)+((y+1)+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y-1)+posicoes_mov]
+
                         }
 
-                        //Movimentacao lateral no eixo Y
+                        //Movimentacao lateral no eixo X
                         else if (eixo_mov == 'x' || eixo_mov == 'X'){
                               
-                              estac[(x*6)+y] = '0';//estac[x][y]
-                              estac[(x*6)+(y+1)] = '0';//estac[x][y+1]
-
-                              //eixo X 2
-                              estac[((x+1)*6)+y] = '0';//estac[x+1][y]
-                              estac[((x+1)*6)+(y+1)] = '0';//estac[x+1][y+1]
+                              //eixo x 1
+                              estac[(x*6)+y] = '0';//estac[x][y],
+                              printf("x%d y%d\n", x, y);
+                              
+                              //eixo x 2
+                              estac[(x*6)+(y+1)] = '0';//estac[x][y],
+                              printf("x%d y%d\n", x, y+1);
+                              
 
 
                               //verifica colisões entre os veículos
                               if (estac[(x*6)+(y+posicoes_mov)] != '0' && estac[(x*6)+(y+posicoes_mov)] > 0){//estac[x][y+posicoes_mov]
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+(y+posicoes_mov)]);//estac[x][y+posicoes_mov]
-                                    printf("colisao1y  carro\n");
                                     //exit(0);
                               }
                               else if (estac[(x*6)+((y-1)+posicoes_mov)] != '0' && estac[(x*6)+((y-1)+posicoes_mov)] > 0){//estac[x][(y-1)+posicoes_mov] 
                                     printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-1)+posicoes_mov)]);//estac[x][(y-1)+posicoes_mov]
-                                    printf("colisao2y  carro\n");
                                     //exit(0);
                               }
 
                               //verifica colisões entre o carro e os limites do estacionamento
                               if (((y+posicoes_mov) > 5) || ((y+posicoes_mov) < 0) || (((y-1)+posicoes_mov) < 0) || (((y-1)+posicoes_mov) > 5)){
                                     printf("O carro %c ultrapassou os limites do estacionamento\n", nome_veiculo_mov);
-                                    printf("Ultrapassou y  carro\n");
                                     //exit(0);
                               }
                               
-                              estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
-                              estac[((x+1)*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x+1][(y+posicoes_mov] 
+                              estac[((x+posicoes_mov)*6)+y] = nome_veiculo_mov;//estac[x-posicoes_mov][y] 
+                              printf("x%d y%d\n", x-posicoes_mov, y);
+                              estac[((x+posicoes_mov)*6)+(y+1)] = nome_veiculo_mov;//estac[x-posicoes_mov][y+1]  
+                              printf("x%d y%d\n", x-posicoes_mov, y+1);
                         }
-                        cont = 0;
+                        
                   }
-                  /*if (eixo_mov == 'y' || eixo_mov == 'Y'){ //manobras dos veículos posicionados no eixo y
-                        //Toda matriz foi desmembrada e transformada em um vetor
-
-                        //carros
-                        if (cont == 2){ 
-                              estac[(x*6)+y] = '0';//estac[x][y]
-                              estac[x*6+(y-1)] = '0';//estac[x][y-1]
-
-                              //verifica colisões entre os veículos
-                              if (estac[(x*6)+(y+posicoes_mov)] != '0' && estac[(x*6)+(y+posicoes_mov)] > 0){//estac[x][y+posicoes_mov]
-                                    printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+(y+posicoes_mov)]);//estac[x][y+posicoes_mov]
-                                    printf("colisao1y  carro\n");
-                                    //exit(0);
-                              }
-                              else if (estac[(x*6)+((y-1)+posicoes_mov)] != '0' && estac[(x*6)+((y-1)+posicoes_mov)] > 0){//estac[x][(y-1)+posicoes_mov] 
-                                    printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-1)+posicoes_mov)]);//estac[x][(y-1)+posicoes_mov]
-                                    printf("colisao2y  carro\n");
-                                    //exit(0);
-                              }
-
-                              //verifica colisões entre o carro e os limites do estacionamento
-                              if (((y+posicoes_mov) > 5) || ((y+posicoes_mov) < 0) || (((y-1)+posicoes_mov) < 0) || (((y-1)+posicoes_mov) > 5)){
-                                    printf("O carro %c ultrapassou os limites do estacionamento\n", nome_veiculo_mov);
-                                    printf("Ultrapassou y  carro\n");
-                                    //exit(0);
-                              }
-                              estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
-                              estac[(x*6)+((y-1)+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y-1)+posicoes_mov]
-                        }
-
-                        //caminhões
-                        else if (cont == 3){ 
-                              estac[(x*6)+y] = '0';//estac[x][y]
-                              estac[(x*6)+(y-1)] = '0';//estac[x][y-1]
-                              estac[(x*6)+(y-2)] = '0';//estac[x][y-2]
-
-                              //verifica colisões entre os veículos
-                              if (estac[(x*6)+(y+posicoes_mov)] != '0' && estac[(x*6)+(y+posicoes_mov)] > 0){//estac[x][y+posicoes_mov]
-                                    printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+(y+posicoes_mov)]);//estac[x][y+posicoes_mov]
-                                    printf("colisao1y  caminhao\n");
-                                    //exit(0);
-                              }
-                              else if (estac[(x*6)+((y-1)+posicoes_mov)] != '0' && estac[(x*6)+((y-1)+posicoes_mov)] > 0 ){//estac[x][(y-1)+posicoes_mov]
-                                    printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-1)+posicoes_mov)]);//estac[x][(y-1)+posicoes_mov]
-                                    printf("colisao2y  caminhao\n");
-                                    //exit(0);
-                              }
-                              else if (estac[(x*6)+((y-2)+posicoes_mov)] != '0' && estac[(x*6)+((y-2)+posicoes_mov)] > 0){//estac[x][(y-2)+posicoes_mov]
-                                    printf("Colisão entre os veículos %c e %c\n", nome_veiculo_mov, estac[(x*6)+((y-2)+posicoes_mov)]);//estac[x][(y-2)+posicoes_mov]
-                                    printf("colisao2y  caminhao\n");
-                                    //exit(0);
-                              }
-
-                              //verifica colisões entre o caminhão e os limites do estacionamento
-                              if (((y+posicoes_mov) > 5) || ((y+posicoes_mov) > 5) || (((y-2)+posicoes_mov) < 0) || (((y-2)+posicoes_mov) > 5)){
-                                    printf("O carro %c ultrapassou os limites do estacionamento\n", nome_veiculo_mov);
-                                    printf("Ultrapassou y  caminhao\n");
-                                    //exit(0);
-                              }
-
-                              estac[(x*6)+(y+posicoes_mov)] = nome_veiculo_mov;//estac[x][y+posicoes_mov]
-                              estac[(x*6)+((y-1)+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y-1)+posicoes_mov] 
-                              estac[(x*6)+((y-2)+posicoes_mov)] = nome_veiculo_mov;//estac[x][(y-2)+posicoes_mov]
-                        }
-
-                        cont = 0;
-                  }*/
+                  
                   /////******* Fim do Eixo Y **********//////
             }
             
