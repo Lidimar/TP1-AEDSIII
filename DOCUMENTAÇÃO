@@ -1,0 +1,96 @@
+Trabalho Prático 1 – AEDs 3
+
+Amanda de Araújo Morato
+Lidimar dos Santos Júnior
+
+Ciência da Computação, UFSJ – Março/2019
+
+
+
+1. Introdução
+
+	Na implementação deste trabalho, foi criado um estacionamento de 6x6 posições. Este foi preenchido através de arquivos de texto que descrevem posicionamentos de carros (que ocupam 2 posições consecutivas) ou caminhões (que ocupam 3 posições consecutivas), além dos eixos em que estão colocados e dos nomes dados a eles (caracteres). Em seguida, o programa lê um outro arquivo  de texto que descreve movimentos entre esses carros.
+	O objetivo final é retirar o carro ‘Z’ desse estacionamento, fazendo-o encostar na posição correta especificada. 
+	O trabalho é bastante detalhado, já que todas as opções de movimentos entre os carros e caminhões devem ser testadas afim de encontrar erros, como colisões entre os carros, ou carros posicionados fora do estacionamento.
+	Apesar de ser um exemplo pequeno, se implementado corretamente através de módulos e funções específicas, esse estacionamento poderá ser convertido em um maior, de mais posições, sem que essas funções e módulos precisem ser totalmente modificadas. 
+
+
+2. Listagem das rotinas
+
+	O programa foi dividido em:
+
+    • módulo de entrada e saída (io.c e io.h);
+    • módulo de configuração do estacionamento (config.c e config.h);
+    • módulo de manobras (manobras.c e manobras.h) e;
+    • programa principal.
+
+	Tendo em vista esta divisão, foram implementadas as seguintes funções:
+
+2.1 - le_arquivo_config: Função pertencente ao módulo “io.c/io.h”. Recebe como parâmetro o arquivo de configuração do estacionamento, obtido na linha de execução do programa (arq_config) e uma matriz de alocada anteriormente (estac) para representar as posições do estacionamento. 
+	A função abre o arquivo e confere se essa abertura aconteceu de forma correta,  chama uma outra função para criar a raiz de uma lista encadeada em que serão salvas as informações extraídas desse arquivo e lê o arquivo linha a linha, salvando nessa lista encadeada.
+	No final, chama uma função para enviar a lista encadeada já preenchida para o módulo de configuração do estacionamento e desaloca a memória utilizada para a lista, além de fechar o arquivo lido no início.
+
+
+2.2 - cria_lista_veiculos: Função pertencente ao módulo “io.c/io.h”.  Como citado anteriormente, cria a raiz de uma lista encadeada em que serão salvas as informações lidas do arquivo de configuração do estacionamento.
+
+2.3 - adicionar_veiculo: Função pertencente ao módulo “io.c/io.h”.  Recebe como parâmetro o ponteiro para a lista de veículos criada anteriormente e todos os dados de um determinado veículo. É a função que cria novas posições da lista encadeada e salva o conteúdo de cada linha do arquivo de configuração do estacionamento em uma posição diferente dessa lista.
+
+
+2.4 – le_arquivo_manobras, cria_lista_manobras e adicionar_manobra: Funções pertencentes ao módulo “io.c/io.h”. Possuem funcionamento bastante semelhante ao das funções anteriores, mas lendo dados do arquivo de manobras. Criam a lista encadeada com os dados desse arquivo e enviam para o módulo de manobras.
+
+
+2.5 – desaloca_veic e desaloca_manobras: Funções pertencentes ao módulo “io.c/io.h”. Como especificado no nome, desaloca as listas encadeadas criadas anteriormente.
+
+
+2.6 – iniciaTempo e finalizaTempo: Funções pertencentes ao módulo “io.c/io.h”. Utilizadas para a contagem de tempo e análise posterior.
+
+
+2.7 – posiciona_veiculo: Função pertencente ao módulo “config.c/config.h”.  Recebe um ponteiro para a lista encadeada com os dados do arquivo de configuração e posiciona os veículos com base nesses dados. Verifica também se não existem colisões entre esses veículos ou se eles não estão posicionados fora do estacionamento.
+
+
+2.8 – movimenta_veiculo: Função pertencente ao módulo “manobras.c/manobras.h”.  Funciona de forma semelhante à função anterior, agora movimentando os veículos de acordo com a lista encadeada que contem os dados do arquivo de manobras e verificando colisões ou posicionamentos errados. Ao final, verifica se o veículo “Z” saiu do estacionamento ou não, que é o objetivo principal do programa.
+
+
+
+3. Descrição dos algoritmos e estruturas de dados utilizados
+
+	Os seguintes tipos de dados foram criados ao longo da implementação do programa: 
+
+3.1 - struct Dados_Veiculo: Utilizada ao longo do programa para armazenar os dados do arquivo de configurações. Chamada posteriormente de “Veiculo” (typedef). Os seguintes tipos primitivos foram utilizados:
+
+	char nome_veiculo;
+     	int tipo_veiculo;
+      	char eixo_veiculo;
+      	int x;
+      	int y;
+
+
+3.2 - struct Lista_Veiculos: A lista de veículos citada anteriormente foi criada utilizando-se desse tipo de dado, que armazena uma struct do tipo “Dados_Veiculo” e um ponteiro do tipo “Lista_Veiculos” para apontar para a próxima posição da lista. Chamada posteriormente de “lista_veiculos” (typedef).
+
+
+3.3 - struct Dados_Manobras: Utilizada ao longo do programa para armazenar os dados do arquivo de manobras. Chamada posteriormente de “Manobras” (typedef). Os seguintes tipos primitivos foram utilizados:
+	
+	char nome_veiculo_mov;
+      	char eixo_mov;
+      	int posicoes_mov;
+
+
+3.4 - struct Lista_Manobras: A lista de manobras citada anteriormente foi criada utilizando-se desse tipo de dado, que armazena uma struct do tipo “Dados_Manobras” e um ponteiro do tipo “Lista_Manobras” para apontar para a próxima posição da lista. Chamada posteriormente de “lista_manobras” (typedef).
+
+
+3.5 - struct tempo: Utilizada na medição de tempo nas funções “iniciaTempo” e “finalizaTempo” citadas anteriormente.
+
+
+4. Análise de complexidade
+
+	Como pode-se concluir em diversas biografias de análise de algoritmos, medir o tempo gasto por um algoritmo não é a forma mais efetiva de medir seu desempenho, pois depende do hardware e do compilador utilizado. Vamos então, primeiramente, estudar a quantidade de vezes que algumas operações importantes são executadas para “n” carros no arquivo e “m” manobras entre eles.
+
+4.1 Melhor caso: O arquivo de configuração do estacionamento e o arquivo de manobras estão vazios.
+
+
+
+
+
+
+
+5. Análise dos resultados obtidos
